@@ -13,7 +13,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserComum extends Usuario{
+public class UserComum{
+    @Id
+    private String CPF;
+    @Column (nullable = false)
+    private String nome;
+    @Column (nullable = false, unique = true)
+    private String email;
+
+    @Column (nullable = false)
+    private String password;
     @Column(nullable = false)
     private int pontuacao;
 

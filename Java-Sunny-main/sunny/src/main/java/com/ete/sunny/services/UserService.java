@@ -1,5 +1,6 @@
 package com.ete.sunny.services;
 
+import com.ete.sunny.model.UserComum;
 import com.ete.sunny.model.Usuario;
 import com.ete.sunny.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class UserService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public void create(Usuario usuario){
+    public void create(UserComum usuario){
         usuarioRepository.save(usuario);
     }
 

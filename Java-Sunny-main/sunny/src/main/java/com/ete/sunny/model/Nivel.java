@@ -1,10 +1,7 @@
 package com.ete.sunny.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +19,7 @@ public class Nivel {
 
     @Column(nullable = false)
     private String nome;
-    @Embedded
+    @OneToOne(mappedBy = "nivel")
     private ExFon exercicio;
 
 }

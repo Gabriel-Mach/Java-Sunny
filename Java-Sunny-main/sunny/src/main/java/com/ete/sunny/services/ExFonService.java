@@ -3,10 +3,12 @@ package com.ete.sunny.services;
 import com.ete.sunny.model.ExFon;
 import com.ete.sunny.repository.ExFonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ExFonService {
     @Autowired
     private ExFonRepository exFonRepository;
@@ -32,7 +34,7 @@ public class ExFonService {
             //o exFon.get() vai trazer o objeto ExFon de dentro do Optional
             exFon.get().setNumtentativas(exFonA.getNumtentativas());
             exFon.get().setDicas(exFonA.getDicas());
-            exFon.get().setNumnvl(exFonA.getNumnvl());
+            exFon.get().setNivel(exFonA.getNivel());
             return exFonRepository.save(exFon.get());
         }else{
             return null;

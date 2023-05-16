@@ -15,7 +15,7 @@ public class ExFon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numnvl;
+    private Long Nnivel;
 
     @Column(nullable = false)
     private int numtentativas;
@@ -25,4 +25,8 @@ public class ExFon {
 
     @Column(nullable = false)
     private boolean resposta;
+
+    @OneToOne
+    @JoinColumn(name = "numero")
+    private Nivel nivel;
 }
