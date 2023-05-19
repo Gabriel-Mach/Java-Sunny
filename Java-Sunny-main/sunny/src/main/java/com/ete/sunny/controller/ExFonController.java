@@ -1,5 +1,6 @@
 package com.ete.sunny.controller;
 
+import com.ete.sunny.model.DetalhesReponsavelRecord;
 import com.ete.sunny.model.ExFon;
 import com.ete.sunny.services.ExFonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,20 @@ public class ExFonController {
     }
     //Tentar resolver esse b.o!!!
     @PutMapping("/atualizar")
-    public ResponseEntity<ExFon> atualizar(ExFon exFon, Long id){
-
+    public ResponseEntity atualizar(ExFon exFon, Long id){
+        exFonService.atualizar(id, exFon);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ExFon> delete(Long id){
-
+    public ResponseEntity delete(Long id){
+        exFonService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/buscar")
+    public ResponseEntity buscar(Long id){
+        var aux = exFonService.busca(id);
+        return ResponseEntity.ok().build();
     }
 
 }
