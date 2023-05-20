@@ -6,10 +6,7 @@ import com.ete.sunny.services.ComumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,9 +22,20 @@ public class ComumController {
         comumService.create(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-    @GetMapping
-    public ResponseEntity<List<UserComum>> findall(){
-        return ResponseEntity.ok(comumService.findAll());
+    @GetMapping("/buscar")
+    public ResponseEntity buscar(String CPF){
+        var com = comumService.buscar(CPF);
+        return ResponseEntity.ok().build();
+    }
+    @PutMapping("/atualizar")
+    public ResponseEntity atualizar(String CPF, UserComum comum){
+        comumService.atualizar(CPF,comum);
+        return ResponseEntity.ok().build();
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity delete(String CPF){
+        comumService.delete(CPF);
+        return  ResponseEntity.noContent().build();
     }
 
 

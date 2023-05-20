@@ -8,10 +8,7 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,9 +24,19 @@ public class NivelController {
         nivelService.create(nivel);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-    @GetMapping
-    public ResponseEntity<List<Nivel>> findAll(){
-        return ResponseEntity.ok(nivelService.findAll());
+    @GetMapping("/bucar")
+    public ResponseEntity <Nivel> buscar(int id){
+        return ResponseEntity.ok(nivelService.busca(id));
+    }
+    @PutMapping("/atualizar")
+    public ResponseEntity <Nivel> atualizar(int id, Nivel nivel){
+        nivelService.atualizar(id,nivel);
+        return ResponseEntity.ok().build();
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity <Nivel> delete(int id){
+        nivelService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 
