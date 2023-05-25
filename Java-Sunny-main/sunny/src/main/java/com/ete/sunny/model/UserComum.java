@@ -13,8 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserComum{
-    @Id
+public class UserComum extends Usuario{
+    /*@Id
     private String CPF;
     @Column (nullable = false)
     private String nome;
@@ -22,7 +22,8 @@ public class UserComum{
     private String email;
 
     @Column (nullable = false)
-    private String password;
+    private String password;*/
+
     @Column(nullable = false)
     private int pontuacao;
 

@@ -1,4 +1,4 @@
-package com.ete.sunny.services;
+/*package com.ete.sunny.services;
 
 import com.ete.sunny.model.UserComum;
 import com.ete.sunny.model.Usuario;
@@ -42,4 +42,4 @@ public class UserService {
             return null;
         }
     }
-}
+}*/

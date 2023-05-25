@@ -17,9 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UserResponsavel {
+public class UserResponsavel extends Usuario {
 
-    @Id
+    /*@Id
     private String CPF;
     @Column (nullable = false)
     private String nome;
@@ -27,7 +27,7 @@ public class UserResponsavel {
     private String email;
 
     @Column (nullable = false)
-    private String password;
+    private String password;*/
     @Column(nullable = false)
     private String telefone;
 

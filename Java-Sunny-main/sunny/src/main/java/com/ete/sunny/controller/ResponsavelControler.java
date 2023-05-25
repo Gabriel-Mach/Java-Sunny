@@ -27,10 +27,22 @@ public class ResponsavelControler {
     }
 
     @PutMapping("/atualizar")
+    public ResponseEntity<UserResponsavel> atualizar(String CPF, UserResponsavel responsavel){
+        responsavelService.atualizar(CPF, responsavel);
+        return ResponseEntity.ok().build();
+    }
 
     @DeleteMapping("/delete")
+    public  ResponseEntity delete(String CPF){
+        responsavelService.delete(CPF);
+        return  ResponseEntity.noContent().build();
+    }
 
     @GetMapping("/buscar")
+    public ResponseEntity buscar(String CPF){
+        var cam = responsavelService.buscar(CPF);
+        return ResponseEntity.ok().build();
+    }
 
 
 }

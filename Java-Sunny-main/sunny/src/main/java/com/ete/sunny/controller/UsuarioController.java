@@ -1,4 +1,4 @@
-package com.ete.sunny.controller;
+/*package com.ete.sunny.controller;
 
 import com.ete.sunny.model.UserComum;
 import com.ete.sunny.model.Usuario;
@@ -33,4 +33,4 @@ public class UsuarioController {
     }
 
 
-}
+}*/
