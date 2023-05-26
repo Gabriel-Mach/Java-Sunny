@@ -24,15 +24,15 @@ public class ComumService {
     }
 
     public void delete(String id){
-        Optional<UserComum> comum = comumRepository.findById(id);
+        Optional<UserComum> comum = comumRepository.findByCPF(id);
         comum.ifPresent(userComum -> comumRepository.delete(userComum));
     }
     public UserComum buscar(String id){
-        Optional<UserComum> usuario = comumRepository.findById(id);
+        Optional<UserComum> usuario = comumRepository.findByCPF(id);
         return usuario.orElse(null);
     }
     public UserComum atualizar(String id, UserComum comum1){
-        Optional<UserComum> comum = comumRepository.findById(id);
+        Optional<UserComum> comum = comumRepository.findByCPF(id);
         if (comum.isPresent()){
             comum.get().setNome(comum1.getNome());
             comum.get().setEmail(comum1.getEmail());

@@ -5,12 +5,7 @@ import com.ete.sunny.model.UserResponsavel;
 import com.ete.sunny.services.ResponsavelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
@@ -20,10 +15,10 @@ public class ResponsavelControler {
     private ResponsavelService responsavelService;
 
     @PostMapping("/criar")
-    public ResponseEntity criar(UserResponsavel user, UriComponentsBuilder uriBuilder){
+    public ResponseEntity criar(@RequestBody UserResponsavel user, UriComponentsBuilder uriBuilder){
         var userAux = responsavelService.create(user);
-        var uri = uriBuilder.path("responsavel/criar/{cpf}").buildAndExpand(userAux.getCPF());
-        return ResponseEntity.created(uri.toUri()).body(new DetalhesReponsavelRecord(userAux));
+        var uri = uriBuilder.path("responsavel/criar/{cpf}").buildAndExpand(userAux.getCPF()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesReponsavelRecord(userAux));
     }
 
     @PutMapping("/atualizar")

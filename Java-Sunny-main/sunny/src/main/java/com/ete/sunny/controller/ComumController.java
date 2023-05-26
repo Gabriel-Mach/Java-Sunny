@@ -18,22 +18,22 @@ public class ComumController {
     private ComumService comumService;
 
     @PostMapping("/criar")
-    public ResponseEntity<UserComum> criar(UserComum usuario){
+    public ResponseEntity<UserComum> criar(@RequestBody UserComum usuario){
         comumService.create(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-    @GetMapping("/buscar")
-    public ResponseEntity buscar(String CPF){
+    @GetMapping("/buscar/{CPF}")
+    public ResponseEntity buscar(@PathVariable String CPF){
         var com = comumService.buscar(CPF);
         return ResponseEntity.ok().build();
     }
-    @PutMapping("/atualizar")
-    public ResponseEntity atualizar(String CPF, UserComum comum){
+    @PutMapping("/atualizar/{CPF}")
+    public ResponseEntity atualizar(@PathVariable String CPF,@RequestBody UserComum comum){
         comumService.atualizar(CPF,comum);
         return ResponseEntity.ok().build();
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity delete(String CPF){
+    @DeleteMapping("/delete/{CPF}")
+    public ResponseEntity delete(@PathVariable String CPF){
         comumService.delete(CPF);
         return  ResponseEntity.noContent().build();
     }
