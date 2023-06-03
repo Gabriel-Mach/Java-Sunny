@@ -1,6 +1,6 @@
 package com.ete.sunny.controller;
 
-import com.ete.sunny.model.Nivel;
+import com.ete.sunny.model.nivel.Nivel;
 
 import com.ete.sunny.services.NivelService;
 

@@ -1,4 +1,4 @@
-package com.ete.sunny.model;
+package com.ete.sunny.model.nivel;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,16 +17,4 @@ public class ExFon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Nnivel;
 
-    @Column(nullable = false)
-    private int numtentativas;
-
-    @Column(nullable = false)
-    private String dicas;
-
-    @Column(nullable = false)
-    private boolean resposta;
-
-    @OneToOne
-    @JoinColumn(name = "numero")
-    private com.ete.sunny.model.Nivel nivel;
 }

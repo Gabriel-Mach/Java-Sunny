@@ -1,6 +1,6 @@
 package com.ete.sunny.controller;
 
-import com.ete.sunny.model.Tema;
+import com.ete.sunny.model.nivel.Tema;
 import com.ete.sunny.services.TemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.ete.sunny.controller;
 
-import com.ete.sunny.model.Aluno;
+import com.ete.sunny.model.aluno.Aluno;
 
 import com.ete.sunny.services.ComumService;
 import org.springframework.beans.factory.annotation.Autowired;

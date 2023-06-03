@@ -1,6 +1,6 @@
 package com.ete.sunny.services;
 
-import com.ete.sunny.model.Tema;
+import com.ete.sunny.model.nivel.Tema;
 import com.ete.sunny.repository.TemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.ete.sunny.model;
+package com.ete.sunny.model.nivel;
 
 
 import jakarta.persistence.*;
@@ -15,11 +15,18 @@ import lombok.Setter;
 public class Nivel {
 
     @Id
-    private int numero;
+    private Long numero;
 
     @Column(nullable = false)
     private String nome;
-    @OneToOne(mappedBy = "nivel")
-    private ExFon exercicio;
+    @Column(nullable = false)
+    private int numtentativas;
+
+    @Column(nullable = false)
+    private String dicas;
+
+    @Column(nullable = false)
+    private boolean resposta;
+
 
 }

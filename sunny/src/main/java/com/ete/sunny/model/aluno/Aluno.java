@@ -1,26 +1,27 @@
-package com.ete.sunny.model;
-
+package com.ete.sunny.model.aluno;
+import com.ete.sunny.model.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
-
+import  com.ete.sunny.model.responsavel.Responsavel;
+import com.ete.sunny.model.nivel.Tema;
 import java.util.List;
 
 @Entity
 @Data
 
-public class Aluno extends Usuario{
+public class Aluno extends Usuario {
     @Column(nullable = false)
     private int pontuacao;
 
     @ManyToOne
     @JoinColumn(name = "id")
-    private com.ete.sunny.model.Responsavel responsavel;
+    private Responsavel responsavel;
 
     @ManyToMany
     @JoinTable(name = "usuario_tema",
-    joinColumns = @JoinColumn (name = "id"),
+    joinColumns = @JoinColumn (name = "id_tema"),
             inverseJoinColumns = @JoinColumn(name = "titulo")
     )
-    private List <com.ete.sunny.model.Tema> temas;
+    private List <Tema> temas;
 
 }

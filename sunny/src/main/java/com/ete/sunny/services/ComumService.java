@@ -1,6 +1,6 @@
 package com.ete.sunny.services;
 
-import com.ete.sunny.model.Aluno;
+import com.ete.sunny.model.aluno.Aluno;
 
 import com.ete.sunny.repository.ComumRepository;
 import org.springframework.beans.factory.annotation.Autowired;

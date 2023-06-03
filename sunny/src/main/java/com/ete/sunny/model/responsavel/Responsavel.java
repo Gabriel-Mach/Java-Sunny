@@ -2,6 +2,7 @@ package com.ete.sunny.model.responsavel;
 
 import com.ete.sunny.model.Usuario;
 import com.ete.sunny.model.abistrato.*;
+import com.ete.sunny.model.aluno.Aluno;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -20,5 +21,5 @@ public class Responsavel extends Usuario {
 
 
     @OneToMany (mappedBy = "responsavel")
-    private List <com.ete.sunny.model.Aluno> aluno;
+    private List <Aluno> aluno;
 }

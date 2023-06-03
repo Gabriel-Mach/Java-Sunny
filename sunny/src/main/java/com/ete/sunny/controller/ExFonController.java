@@ -1,7 +1,7 @@
 package com.ete.sunny.controller;
 
-import com.ete.sunny.model.DetalhesReponsavelRecord;
-import com.ete.sunny.model.ExFon;
+import com.ete.sunny.model.responsavel.DetalhesReponsavelRecord;
+import com.ete.sunny.model.nivel.ExFon;
 import com.ete.sunny.services.ExFonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package com.ete.sunny.controller;
 
-import com.ete.sunny.model.DetalhesReponsavelRecord;
-import com.ete.sunny.model.Responsavel;
+import com.ete.sunny.model.responsavel.DetalhesReponsavelRecord;
+import com.ete.sunny.model.responsavel.Responsavel;
 import com.ete.sunny.model.responsavel.Responsavel;
 import com.ete.sunny.services.ResponsavelService;
 import org.springframework.beans.factory.annotation.Autowired;

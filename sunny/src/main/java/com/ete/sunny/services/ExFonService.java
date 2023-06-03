@@ -1,6 +1,6 @@
 package com.ete.sunny.services;
 
-import com.ete.sunny.model.ExFon;
+import com.ete.sunny.model.nivel.ExFon;
 import com.ete.sunny.repository.ExFonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
