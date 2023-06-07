@@ -13,9 +13,11 @@ public class ResponsavelService {
     @Autowired
     private ResponsavelRepository responsavelRepository;
 
-    public Responsavel create(Responsavel responsavel){ return responsavelRepository.save(responsavel);}
+    public Responsavel create(Responsavel responsavel){
+        return responsavelRepository.save(responsavel);}
 
     public List<Responsavel> findAll(){
+
         return responsavelRepository.findAll();
     }
 
@@ -30,7 +32,7 @@ public class ResponsavelService {
             responsavel.get().setNome(responsavel1.getNome());
             responsavel.get().setEmail(responsavel1.getEmail());
             responsavel.get().setPassword(responsavel1.getPassword());
-            responsavel.get().setTelefone(responsavel1.getTelefone());
+            responsavel.get().setTelefoneResp(responsavel1.getTelefoneResp());
             return responsavelRepository.save(responsavel.get());
         } else {
             return null;
