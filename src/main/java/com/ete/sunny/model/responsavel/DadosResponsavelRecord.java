@@ -32,8 +32,9 @@ public record DadosResponsavelRecord(
         @Size(max = 11)
         String telefoneResp
 ) {
-    public Responsavel toResp(){
-        return new Responsavel(cpf(),nome(),email(),telefoneResp());
+    public Responsavel toResp(DadosResponsavelRecord responsavelRecord){
+            //QUAL O PROBLEMA QUE ESTÁ DANDO AQUI???
+            return new Responsavel(null, cpf(), nome(),email(),telefoneResp());
     }
 
 

@@ -26,8 +26,17 @@ public class ProfessorService {
         return professorRepository.findAll(page);
 
     }
-    public Professor atualizarProfessor (Professor professor){
-        return professorRepository.save(professor);
+    public Professor atualizarProfessor (Long id,Professor professoraux){
+        var professor = professorRepository.findById(id);
+        professor.get().setCPF(professoraux.getCPF());
+        professor.get().setNome(professoraux.getNome());
+        professor.get().setEmail(professoraux.getEmail());
+        professor.get().setPassword(professoraux.getPassword());
+        professor.get().setEscola(professoraux.getEscola());
+        professor.get().setTelefoneProf(professoraux.getTelefoneProf());
+        return professorRepository.save(professor.get());
+
+
     }
     public void deletarProfessor (Long id){
         professorRepository.deleteById(id);

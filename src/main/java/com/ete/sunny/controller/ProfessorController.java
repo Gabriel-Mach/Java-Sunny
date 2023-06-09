@@ -30,12 +30,13 @@ public class ProfessorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity atualizarProfessor(@PathVariable Long id, @Valid @RequestBody DadosProfessorRecord professorRecord){
-        var profAux = professorRecord.toProfessor(professorRecord);
+    public ResponseEntity atualizarProfessor(@PathVariable Long id, @Valid @RequestBody DadosProfessorRecord professorRecord ){
+        var profaux = professorRecord.toProfessor(professorRecord);
         if (professorService.existeProfessor(id)) return ResponseEntity.notFound().build();
-        var profAtualizado = professorService.atualizarProfessor(profAux);
+        var profAtualizado = professorService.atualizarProfessor(id,profaux);
         return ResponseEntity.ok(new DetalhesProfessorRecord(profAtualizado));
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity deletarProfessor(@PathVariable Long id){
         if (professorService.existeProfessor(id)) return ResponseEntity.notFound().build();

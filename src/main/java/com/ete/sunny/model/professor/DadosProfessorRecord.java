@@ -6,12 +6,12 @@ import jakarta.validation.constraints.*;
 public record DadosProfessorRecord (
         @NotNull
         @NotBlank
-        @Size(min = 11, max = 11)
+        @Size(max = 100)
         String nome,
 
         @NotNull
         @NotBlank
-        @Size(max = 100)
+        @Size(min = 11, max = 11)
         String cpf,
 
         @NotNull
@@ -34,11 +34,9 @@ public record DadosProfessorRecord (
         @NotBlank
         @Size(max = 100)
         String escola
-)
-{
+) {
     public Professor toProfessor(DadosProfessorRecord professorRecord){
         return new Professor(null, cpf(), nome(),email(),password(),telefoneProf(),escola() );
-
-
     }
+
 }

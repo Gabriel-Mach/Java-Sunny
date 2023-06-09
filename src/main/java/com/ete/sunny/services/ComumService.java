@@ -2,7 +2,7 @@ package com.ete.sunny.services;
 
 import com.ete.sunny.model.aluno.Aluno;
 
-import com.ete.sunny.repository.ComumRepository;
+import com.ete.sunny.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,34 +13,38 @@ import java.util.Optional;
 public class ComumService {
 
     @Autowired
-    private ComumRepository comumRepository;
+    private AlunoRepository alunoRepository;
 
     public void create(Aluno comum){
-        comumRepository.save(comum);
+        alunoRepository.save(comum);
     }
 
     public List<Aluno> findAll(){
-        return comumRepository.findAll();
+        return alunoRepository.findAll();
     }
 
-    public void delete(String id){
-        Optional<Aluno> comum = comumRepository.findByCPF(id);
-        comum.ifPresent(userComum -> comumRepository.delete(userComum));
+
+    public void deleteAluno(Long id){
+        Optional<Aluno> comum = alunoRepository.findById(id);
+        comum.ifPresent(userComum -> alunoRepository.delete(userComum));
     }
-    public Aluno buscar(String id){
-        Optional<Aluno> usuario = comumRepository.findByCPF(id);
+    public Aluno buscarAlunoId(Long id){
+        Optional<Aluno> usuario = alunoRepository.findById(id);
         return usuario.orElse(null);
     }
-    public Aluno atualizar(String id, Aluno comum1){
-        Optional<Aluno> comum = comumRepository.findByCPF(id);
-        if (comum.isPresent()){
-            comum.get().setNome(comum1.getNome());
-            comum.get().setEmail(comum1.getEmail());
-            comum.get().setPassword(comum1.getPassword());
-            comum.get().setPontuacao(comum1.getPontuacao());
-            return comumRepository.save(comum.get());
-        }else {
-            return null;
-        }
+    public Aluno atualizarAluno(Long id, Aluno alunoaux){
+        var aluno = alunoRepository.findById(id);
+        aluno.get().setCPF(alunoaux.getCPF());
+        aluno.get().setNome(alunoaux.getNome());
+        aluno.get().setEmail(alunoaux.getEmail());
+        aluno.get().setPassword(alunoaux.getPassword());
+        aluno.get().setPontuacao(alunoaux.getPontuacao());
+        return alunoRepository.save(aluno.get());
+
+
+    }
+
+    public  boolean existeAluno(Long id){
+        return !alunoRepository.existsById(id);
     }
 }
