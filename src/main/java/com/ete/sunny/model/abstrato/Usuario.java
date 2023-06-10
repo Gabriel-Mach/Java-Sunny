@@ -1,4 +1,4 @@
-package com.ete.sunny.model;
+package com.ete.sunny.model.abstrato;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.lang.annotation.Inherited;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -17,7 +17,7 @@ import java.lang.annotation.Inherited;
 @Table(name = "User")
 public abstract class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String CPF;
     @Column (nullable = false)

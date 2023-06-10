@@ -15,8 +15,8 @@ public class ComumService {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    public void create(Aluno comum){
-        alunoRepository.save(comum);
+    public Aluno create(Aluno comum){
+        return alunoRepository.save(comum);
     }
 
     public List<Aluno> findAll(){

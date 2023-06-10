@@ -1,11 +1,13 @@
 package com.ete.sunny.services;
 
+
 import com.ete.sunny.model.responsavel.Responsavel;
 import com.ete.sunny.repository.ResponsavelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,9 +18,9 @@ public class ResponsavelService {
     public Responsavel create(Responsavel responsavel){
         return responsavelRepository.save(responsavel);}
 
-    public List<Responsavel> findAll(){
+    public Page<Responsavel> findAll(Pageable page) {
+        return responsavelRepository.findAll(page);
 
-        return responsavelRepository.findAll();
     }
 
     public void delete(String CPF){

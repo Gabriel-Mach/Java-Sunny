@@ -14,14 +14,11 @@ public class Aluno extends Usuario {
     private int pontuacao;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_responsavel")
     private Responsavel responsavel;
 
-    @ManyToMany
-    @JoinTable(name = "usuario_tema",
-    joinColumns = @JoinColumn (name = "id_tema"),
-            inverseJoinColumns = @JoinColumn(name = "titulo")
-    )
-    private List <Tema> temas;
-
+    public Aluno(Long id, String CPF, String nome, String email, String password, Responsavel responsavel) {
+        super(id, CPF, nome, email, password);
+        this.responsavel = responsavel;
+    }
 }

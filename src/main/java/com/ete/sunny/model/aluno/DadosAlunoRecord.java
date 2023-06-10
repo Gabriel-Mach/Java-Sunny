@@ -1,5 +1,6 @@
 package com.ete.sunny.model.aluno;
 
+import com.ete.sunny.model.responsavel.Responsavel;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,11 +30,11 @@ public record DadosAlunoRecord(
 
         @NotNull
         @NotBlank
-        int pontuacao
+        Responsavel responsavel
 
 ) {
     public Aluno toAluno(DadosAlunoRecord alunoRecord){
-        return new Aluno( null,nome(),cpf(),email(),password(),pontuacao() );
+        return new Aluno( null,nome(),cpf(),email(),password(), responsavel());
             //QUAL O PROBLEMA QUE ESTÁ DANDO AQUI???
     }
 

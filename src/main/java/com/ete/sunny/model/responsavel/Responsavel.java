@@ -22,9 +22,10 @@ public class Responsavel extends Usuario {
     @OneToMany (mappedBy = "responsavel")
     private List <Aluno> aluno;
 
-    public Responsavel(Long id, String cpf, String nome, String email, String password, String telefoneResp){
+    public Responsavel(Long id, String cpf, String nome, String email, String password){
         super(id,cpf,nome,email,password);
         this.telefoneResp = telefoneResp;
     }
+
 
 }
