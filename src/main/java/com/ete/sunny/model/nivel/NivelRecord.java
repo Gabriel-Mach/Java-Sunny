@@ -5,35 +5,29 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record NivelRecord(
+        Long numero,
         @NotNull
         @NotBlank
         @Size(max = 100)
     String nome,
-        @NotNull
-        @NotBlank
-
     int numtentativas,
         @NotNull
         @NotBlank
         @Size(max = 100)
 
     String dicas,
-        @NotNull
-        @NotBlank
 
     boolean resposta,
         @NotNull
-        @NotBlank
-
-    Tema tema
+        Tema tema
 
 ) {
     public Nivel toNivel(NivelRecord nivelRecord){
-        return new Nivel(null, nome(),numtentativas(), dicas(), resposta(), tema());
+        return new Nivel(numero(), nome(),numtentativas(), dicas(), resposta(), tema());
 
     }
 
     public NivelRecord(Nivel nivel) {
-        this(nivel.getNome(),nivel.getNumtentativas(),nivel.getDicas(), nivel.isResposta(), nivel.getTema());
+        this(nivel.getNumero(), nivel.getNome(),nivel.getNumtentativas(),nivel.getDicas(), nivel.isResposta(), nivel.getTema());
     }
 }

@@ -4,6 +4,8 @@ package com.ete.sunny.services;
 import com.ete.sunny.model.nivel.Nivel;
 import com.ete.sunny.repository.NivelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -36,5 +38,8 @@ public class NivelService {
     public  boolean existeNvl(Long id){
             return !nivelRepository.existsById(id);
     }
+
+    public Page<Nivel> findAll(Pageable page) {
+        return nivelRepository.findAll(page);}
 }
 

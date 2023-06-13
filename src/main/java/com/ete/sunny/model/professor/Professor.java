@@ -1,6 +1,6 @@
 package com.ete.sunny.model.professor;
 
-import com.ete.sunny.model.Usuario;
+import com.ete.sunny.model.abstrato.Usuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;

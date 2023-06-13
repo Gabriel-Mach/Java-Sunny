@@ -1,6 +1,6 @@
 package com.ete.sunny.model.responsavel;
 
-import com.ete.sunny.model.Usuario;
+import com.ete.sunny.model.abstrato.Usuario;
 import com.ete.sunny.model.aluno.Aluno;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,7 +1,7 @@
 package com.ete.sunny.repository;
 
 import com.ete.sunny.model.aluno.Aluno;
-import com.ete.sunny.model.Usuario;
+import com.ete.sunny.model.abstrato.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

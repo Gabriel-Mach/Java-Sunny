@@ -1,5 +1,5 @@
 package com.ete.sunny.model.aluno;
-import com.ete.sunny.model.Usuario;
+import com.ete.sunny.model.abstrato.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 import  com.ete.sunny.model.responsavel.Responsavel;

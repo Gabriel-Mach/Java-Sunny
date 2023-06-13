@@ -8,8 +8,7 @@ import lombok.Setter;
 
 
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +18,10 @@ public abstract class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column (nullable = false, unique = true)
     private String CPF;
+
     @Column (nullable = false)
     private String nome;
 

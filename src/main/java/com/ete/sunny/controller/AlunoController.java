@@ -18,7 +18,7 @@ public class AlunoController {
 
     @PostMapping("/criar")
     public ResponseEntity criar(@Valid @RequestBody DadosAlunoRecord alunoRecord, UriComponentsBuilder uriBuilder){
-        var alun = comumService.create(alunoRecord.toAluno(alunoRecord));
+        var alun = comumService.createAluno(alunoRecord.toAluno(alunoRecord));
         var uri = uriBuilder.path("/alunos/{id}").buildAndExpand(alun.getId()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesAlunoRecord(alun));
     }

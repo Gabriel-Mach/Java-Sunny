@@ -8,6 +8,8 @@ import com.ete.sunny.services.NivelService;
 import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +25,13 @@ public class NivelController {
     private NivelService nivelService;
 
     @PostMapping("/criar")
-    public ResponseEntity criarN(@Valid @RequestBody Nivel nivel, NivelRecord nivelRecord, UriComponentsBuilder builder){
+    public ResponseEntity criarN(@Valid @RequestBody NivelRecord nivelRecord, UriComponentsBuilder builder){
         var nvl = nivelService.criarNvl(nivelRecord.toNivel(nivelRecord));
         var uri = builder.path("/niveis/{id}").buildAndExpand(nvl.getNumero());
         return ResponseEntity.created(uri.toUri()).body(nvl);
         /*Nao entendi o pq de estar pedindo o toUri*/
     }
-    @GetMapping("/bucar")
+    @GetMapping("/{id}")
     public ResponseEntity buscarNivel( @PathVariable Long id){
         var nvel = nivelService.buscarNvl(id);
         if (nvel == null) return ResponseEntity.notFound().build();
@@ -46,6 +48,11 @@ public class NivelController {
     public ResponseEntity <Nivel> delete(Long id){
         nivelService.deleteNvl(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity findAll(@PageableDefault(size = 10,sort = {"nome"}) Pageable page){
+        return ResponseEntity.ok(nivelService.findAll(page));
     }
 
 
