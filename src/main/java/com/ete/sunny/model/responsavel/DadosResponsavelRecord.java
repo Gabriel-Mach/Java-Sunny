@@ -7,34 +7,28 @@ import jakarta.validation.constraints.Size;
 
 public record DadosResponsavelRecord(
         @NotNull
-        @NotBlank
         @Size(min = 11, max = 11)
         String cpf,
 
         @NotNull
-        @NotBlank
         @Size(max = 100)
         String nome,
 
         @NotNull
-        @NotBlank
         @Email
         @Size(max = 100)
         String email,
 
         @NotNull
-        @NotBlank
         @Size(min = 8, max = 100)
         String password,
 
         @NotNull
-        @NotBlank
         @Size(max = 11)
         String telefoneResp
 ) {
-    public Responsavel toResp(){
-            //QUAL O PROBLEMA QUE ESTÁ DANDO AQUI???
-            return new Responsavel(null, this.cpf(), this.nome(),this.email(),this.telefoneResp());
+    public Responsavel toResp(DadosResponsavelRecord responsavelRecord){
+            return new Responsavel(null, this.cpf(), this.nome(),this.email(),this.password(),this.telefoneResp());
     }
 
 

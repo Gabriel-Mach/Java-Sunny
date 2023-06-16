@@ -24,7 +24,7 @@ public class NivelController {
     @Autowired
     private NivelService nivelService;
 
-    @PostMapping("/criar")
+    @PostMapping
     public ResponseEntity criarN(@Valid @RequestBody NivelRecord nivelRecord, UriComponentsBuilder builder){
         var nvl = nivelService.criarNvl(nivelRecord.toNivel(nivelRecord));
         var uri = builder.path("/niveis/{id}").buildAndExpand(nvl.getNumero());
@@ -37,16 +37,16 @@ public class NivelController {
         if (nvel == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(new NivelRecord(nvel));
     }
-    @PutMapping("/atualizar")
+    @PutMapping("/{id}")
     public ResponseEntity atualizarNivel(@PathVariable Long id,@Valid @RequestBody NivelRecord nivel){
         var nvlAux = nivel.toNivel(nivel);
         if (nivelService.existeNvl(id))return ResponseEntity.notFound().build();
         var nvlAtual = nivelService.atualizarNvl(id,nvlAux);
         return ResponseEntity.ok(new NivelRecord(nvlAtual));
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity <Nivel> delete(Long id){
-        nivelService.deleteNvl(id);
+    @DeleteMapping("/{numero}")
+    public ResponseEntity <Nivel> delete(@PathVariable Long numero){
+        nivelService.deleteNvl(numero);
         return ResponseEntity.noContent().build();
     }
 

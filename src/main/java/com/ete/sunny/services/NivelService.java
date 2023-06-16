@@ -35,8 +35,8 @@ public class NivelService {
     public void deleteNvl(Long id){
             nivelRepository.deleteById(id);
     }
-    public  boolean existeNvl(Long id){
-            return !nivelRepository.existsById(id);
+    public  boolean existeNvl(Long numero){
+            return !nivelRepository.existsById(numero);
     }
 
     public Page<Nivel> findAll(Pageable page) {

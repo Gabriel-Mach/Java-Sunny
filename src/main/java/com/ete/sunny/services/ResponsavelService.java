@@ -23,25 +23,22 @@ public class ResponsavelService {
 
     }
 
-    public void delete(String CPF){
-        Optional<Responsavel> responsavel = responsavelRepository.findById(CPF);
+    public void delete(Long id){
+        Optional<Responsavel> responsavel = responsavelRepository.findById(id);
         responsavel.ifPresent(userResponsavel -> responsavelRepository.delete(userResponsavel));
 
     }
-    public Responsavel atualizar(String CPF, Responsavel responsavel1) {
-        Optional<Responsavel> responsavel = responsavelRepository.findById(CPF);
-        if (responsavel.isPresent()) {
-            responsavel.get().setNome(responsavel1.getNome());
-            responsavel.get().setEmail(responsavel1.getEmail());
-            responsavel.get().setPassword(responsavel1.getPassword());
-            responsavel.get().setTelefoneResp(responsavel1.getTelefoneResp());
-            return responsavelRepository.save(responsavel.get());
-        } else {
-            return null;
-        }
+    public Responsavel atualizar(Long id, Responsavel responsavel1) {
+        var respp = responsavelRepository.findById(id);
+        respp.get().setNome(responsavel1.getNome());
+        respp.get().setEmail(responsavel1.getEmail());
+        respp.get().setPassword(responsavel1.getPassword());
+        respp.get().setTelefoneResp(responsavel1.getTelefoneResp());
+        return responsavelRepository.save(respp.get());
+
     }
-        public Responsavel buscar(String CPF){
-            Optional<Responsavel> resp = responsavelRepository.findById(CPF);
+        public Responsavel buscar(Long id){
+            Optional<Responsavel> resp = responsavelRepository.findById(id);
             return resp.orElse(null);
         }
 
