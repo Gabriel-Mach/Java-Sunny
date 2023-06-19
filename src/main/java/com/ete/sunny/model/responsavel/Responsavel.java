@@ -4,6 +4,7 @@ import com.ete.sunny.model.abstrato.Usuario;
 import com.ete.sunny.model.aluno.Aluno;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
@@ -19,7 +20,8 @@ public class Responsavel extends Usuario {
     private String telefoneResp;
 
 
-    @OneToMany (mappedBy = "responsavel")
+    @OneToMany
+    @JoinColumn(name = "id_aluno")
     private List <Aluno> aluno;
 
     public Responsavel(Long id, String cpf, String nome, String email, String password, String telefoneResp){
