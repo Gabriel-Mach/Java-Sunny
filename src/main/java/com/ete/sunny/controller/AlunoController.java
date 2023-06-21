@@ -3,7 +3,9 @@ package com.ete.sunny.controller;
 
 import com.ete.sunny.model.aluno.DadosAlunoRecord;
 import com.ete.sunny.model.aluno.DetalhesAlunoRecord;
+import com.ete.sunny.model.responsavel.Responsavel;
 import com.ete.sunny.services.AlunoService;
+import com.ete.sunny.services.ResponsavelService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +22,7 @@ public class AlunoController {
 
     @PostMapping
     public ResponseEntity criar(@Valid @RequestBody DadosAlunoRecord alunoRecord, UriComponentsBuilder uriBuilder){
-        var alun = alunoService.createAluno(alunoRecord.toAluno(alunoRecord));
+        var alun = alunoService.createAluno(alunoRecord);
         var uri = uriBuilder.path("/alunos/post/{id}").buildAndExpand(alun.getId()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesAlunoRecord(alun));
     }
@@ -32,7 +34,7 @@ public class AlunoController {
     }
     @PutMapping("/{id}")
     public ResponseEntity atualizar(@PathVariable Long id,@Valid @RequestBody DadosAlunoRecord alunoRecord){
-        var alunaux = alunoRecord.toAluno(alunoRecord);
+        var alunaux = alunoRecord.toAluno();
         if (alunoService.existeAluno(id)) return  ResponseEntity.notFound().build();
         var alunoAtualizado = alunoService.atualizarAluno(id, alunaux);
        return  ResponseEntity.ok(new DetalhesAlunoRecord(alunoAtualizado));

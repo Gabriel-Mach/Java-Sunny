@@ -2,7 +2,9 @@ package com.ete.sunny.services;
 
 import com.ete.sunny.model.aluno.Aluno;
 
+import com.ete.sunny.model.aluno.DadosAlunoRecord;
 import com.ete.sunny.repository.AlunoRepository;
+import com.ete.sunny.repository.ResponsavelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,8 +20,19 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    public Aluno createAluno(Aluno comum){
-        return alunoRepository.save(comum);
+    @Autowired
+    private ResponsavelRepository responsavelRepository;
+
+
+    public Aluno createAluno(DadosAlunoRecord aluno){
+        var respons = responsavelRepository.findById(aluno.idResponsavel());
+        var alun = aluno.toAluno();
+        if(respons.isEmpty()){
+            throw new RuntimeException("Responsavel nao exite!");
+        }else {
+            alun.setResponsavel(respons.get());
+            return alunoRepository.save(alun);
+        }
     }
 
     public List<Aluno> findAll(){

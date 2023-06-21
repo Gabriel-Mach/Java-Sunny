@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,15 +20,8 @@ public class Responsavel extends Usuario {
     @Column(nullable = false)
     private String telefoneResp;
 
-
-    @OneToMany
-    @JoinColumn(name = "id_aluno")
-    private List <Aluno> aluno;
-
     public Responsavel(Long id, String cpf, String nome, String email, String password, String telefoneResp){
         super(id,cpf,nome,email,password);
         this.telefoneResp = telefoneResp;
     }
-
-
 }

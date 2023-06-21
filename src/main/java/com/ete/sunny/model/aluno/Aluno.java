@@ -13,6 +13,8 @@ public class Aluno extends Usuario {
     @Column(nullable = false)
     private int pontuacao;
 
+    @ManyToOne
+    Responsavel responsavel;
 
 
     public Aluno(Long id, String CPF, String nome, String email, String password) {
